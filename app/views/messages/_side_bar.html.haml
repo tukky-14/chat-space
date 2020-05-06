@@ -1,1 +1,16 @@
-＜サイドバー＞
+.side-bar
+  .side-box
+    .side-box__menu
+      %p.side-box__menu__name eiji
+      %ul.side-box__menu__icon
+        %li
+          = link_to "#" do
+            = icon('far', 'edit', class: "side-box__menu__icon__edit")
+        %li
+          = link_to "#" do
+            = icon('fas', 'cog', class: "side-box__menu__icon__cog")
+            
+  .side-groups
+    .side-groups__box
+      %p.side-groups__box__name techcamp
+      %p.side-groups__box__message まだメッセージがありません

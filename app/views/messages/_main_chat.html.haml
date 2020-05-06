@@ -1,1 +1,24 @@
-<チャット画面>
+.main-chat
+  .main-top
+    .main-top__info
+      %ul.main-top__info__list
+        %li.main-top__info__list__name eiji
+        %li.main-top__info__list__edit
+          = link_to 'Edit', "#", class: "main-top__info__list__edit__text" 
+      %p.main-top__info__member Member :eiji
+
+  .main-list
+    .main-list__box
+      %ul.main-list__box__top
+        %li.main-list__top__box__name eiji
+        %li.main-list__top__box__time 2019/11/20(Wed) 17:43:01
+      %p.main-list__box__message おはよう！
+
+  .main-form
+    .main-form__new
+      %form.main-form__new__type
+        %input{type: "text", placeholder: "type a message", class: "main-form__new__type__text"}
+        %label.main-form__new__type__image
+          = icon('far', 'image')
+          %input{type: "file", class: "main-form__new__type__image__data"}
+      %input{type: "submit", value: "Send", class: "main-form__new__send"}
