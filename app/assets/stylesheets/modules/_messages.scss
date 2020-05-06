@@ -1,3 +1,11 @@
+$white: #fff;
+$act_blue: #38aef0;
+
+@mixin flex_between {
+  display: flex;
+  justify-content: space-between;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -17,7 +25,7 @@
 .main-chat {
   width: calc(100vw - 300px);
   height: 100vh;
-  background-color: #fff;
+  background-color: $white;
 }
 
 // サイドバー上部
@@ -28,34 +36,34 @@
   display: flex;
   align-items: center;
   padding: 0 20px;
+  &__menu {
+    height: 20px;
+    width: 260px;
+    @include flex_between;
+    &__name {
+      color: $white;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    &__icon {
+      width: 60px;
+      line-height: 20px;
+      display: flex;
+      justify-content: flex-end;
+      &__edit {
+        color: $white;
+        text-decoration: none;
+      }
+      &__cog {
+        color: $white;
+        text-decoration: none;
+        margin-left: 5px;
+      }
+    }
+  }
 }
 
-.side-box__menu {
-  height: 20px;
-  width: 260px;
-  display: flex;
-  justify-content: space-between;
-}
-.side-box__menu__name {
-  color: #fff;
-  font-size: 16px;
-  line-height: 20px;
-}
-.side-box__menu__icon {
-  width: 60px;
-  line-height: 20px;
-  display: flex;
-  justify-content: flex-end;
-}
-.side-box__menu__icon__edit {
-  color: #fff;
-  text-decoration: none;
-}
-.side-box__menu__icon__cog {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 5px;
-}
+
 
 // サイドバー下部
 // ------------------------------------
@@ -63,59 +71,57 @@
   background-color: #2f3e51;
   height: calc(100vh - 100px);
   padding: 20px 20px 0;
+  &__box {
+    color: $white;
+    font-weight: bold;
+    margin-bottom: 40px;
+    &__name {
+      font-size: 15px;
+    }
+    &__message {
+      margin-top: 5px;
+      font-size: 11px;
+    }
+  }
 }
 
-.side-groups__box {
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 40px;
-}
-.side-groups__name {
-  font-size: 15px;
-}
-.side-groups__box__message {
-  margin-top: 5px;
-  font-size: 11px;
-}
 
 // メイン画面上部
 // ------------------------------------
 .main-top {
   height: 100px;
-  background-color: #fff;
+  background-color: $white;
+  &__info {
+    padding: 0 40px;
+    &__list {
+      @include flex_between;
+      &__name {
+        color: #333;
+        font-size: 20px;
+        padding: 35px 0 15px;
+      }
+      &__edit {
+        font-size: 16px;
+        height: 40px;
+        width: 72px;
+        border: 1px solid $act_blue;
+        padding: 0 20px;
+        line-height: 40px;
+        margin-top: 28px;
+        cursor: pointer;
+        &__text {
+          color: $act_blue;
+          text-decoration: none;
+        }
+      }
+    }
+    &__member {
+      color: #999;
+      font-size: 12px;
+    }
+  }
 }
 
-.main-top__info {
-  padding: 0 40px;
-}
-.main-top__info__list {
-  display: flex;
-  justify-content: space-between;
-}
-
-.main-top__info__list__name {
-  color: #333;
-  font-size: 20px;
-  padding: 35px 0 15px;
-}
-.main-top__info__list__edit {
-  font-size: 16px;
-  height: 40px;
-  width: 72px;
-  border: 1px solid #38aef0;
-  padding: 0 20px;
-  line-height: 40px;
-  margin-top: 28px;
-  cursor: pointer;
-}
-.main-top__info__list__edit__text {
-  color: #38aef0;
-  text-decoration: none;
-}
-.main-top__info__member {
-  color: #999;
-  font-size: 12px;
-}
 
 // メイン画面メッセージ部分
 // ------------------------------------
@@ -123,30 +129,30 @@
   height: calc(100vh - 190px);
   background-color: #fafafa;
   padding-top: 35px;
+  &__box {
+    padding: 0 40px;
+    &__top {
+      display: flex;
+      justify-content: flex-start;
+    }
+    &__message {
+      color: #434a54;
+      font-size: 14px;
+      padding-top: 12px;
+      padding-bottom: 46px;
+    }
+  }
+  &__top__text__name {
+    color: #333;
+    font-size: 16px;
+  }
+  &__top__text__time {
+    color: #999;
+    font-size: 12px;
+    margin-left: 5px;
+  }
 }
 
-.main-list__box {
-  padding: 0 40px;
-}
-.main-list__box__top {
-  display: flex;
-  justify-content: flex-start;
-}
-.main-list__top__box__name {
-  color: #333;
-  font-size: 16px;
-}
-.main-list__top__box__time {
-  color: #999;
-  font-size: 12px;
-  margin-left: 5px;
-}
-.main-list__box__message {
-  color: #434a54;
-  font-size: 14px;
-  padding-top: 12px;
-  padding-bottom: 46px;
-}
 
 // メイン画面フォーム部分
 // ------------------------------------
@@ -156,45 +162,41 @@
   display: flex;
   align-items: center;
   padding: 20px 40px;
-}
-
-.main-form__new {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.main-form__new__type {
-  height: 50px;
-  width: 100%;
-  line-height: 50px;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-.main-form__new__type__text {
-  text-decoration: none;
-  width: 100%;
-  padding-left: 10px;
-}
-.main-form__new__type__image {
-  color: #000;
-  position: absolute;
-  font-size: 1.5rem;
-  right: 10px;
-  cursor: pointer;
-}
-.main-form__new__type__image__data {
-  display: none;
-}
-
-.main-form__new__send {
-  color: #fff;
-  height: 50px;
-  min-width: 100px;
-  line-height: 50px;
-  text-align: center;
-  margin-left: 15px;
-  background-color: #38aef0;
-  cursor: pointer;
+  &__new {
+    width: 100%;
+    @include flex_between;
+    &__type {
+      height: 50px;
+      width: 100%;
+      line-height: 50px;
+      background-color: $white;
+      @include flex_between;
+      position: relative;
+      &__text {
+        text-decoration: none;
+        width: 100%;
+        padding-left: 10px;
+      }
+      &__image {
+        color: #000;
+        position: absolute;
+        font-size: 1.5rem;
+        right: 10px;
+        cursor: pointer;
+        &__data {
+          display: none;
+        }
+      }
+    }
+    &__send {
+      color: $white;
+      height: 50px;
+      min-width: 100px;
+      line-height: 50px;
+      text-align: center;
+      margin-left: 15px;
+      background-color: $act_blue;
+      cursor: pointer;
+    }
+  }
 }
