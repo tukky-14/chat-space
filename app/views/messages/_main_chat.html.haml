@@ -14,11 +14,20 @@
         %li.main-list__top__text__time 2019/11/20(Wed) 17:43:01
       %p.main-list__box__message おはよう！
 
+  -# .main-form
+  -#   .main-form__new
+  -#     %form.main-form__new__type
+  -#       %input{type: "text", placeholder: "type a message", class: "main-form__new__type__text"}
+  -#       %label.main-form__new__type__image
+  -#         = icon('far', 'image')
+  -#         %input{type: "file", class: "main-form__new__type__image__data"}
+  -#     %input{type: "submit", value: "Send", class: "main-form__new__send"}
   .main-form
     .main-form__new
-      %form.main-form__new__type
-        %input{type: "text", placeholder: "type a message", class: "main-form__new__type__text"}
-        %label.main-form__new__type__image
-          = icon('far', 'image')
-          %input{type: "file", class: "main-form__new__type__image__data"}
-      %input{type: "submit", value: "Send", class: "main-form__new__send"}
+      = form_for [@group, @message] do |f|
+        .main-form__new__type
+          = f.text_field :content, class: "main-form__new__type__text", placeholder: "type a message"
+          = f.label :image, class: "main-form__new__type__image"
+            = icon('far', 'image')
+            = f.file_field :image, class: "main-form__new__type__image__data"
+          = f.submit "Send", class: "main-form__new__send"
