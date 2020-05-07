@@ -14,23 +14,13 @@ class MessagesController < ApplicationController
       @messages = @group.messages.includes(:user)
       flash.now[:alert] = 'メッセージを入力してください。'
       render :index
-  end
-
-  def edit
-  end
-
-  def update
-    if current_user.update(user_params)
-      redirect_to root_path
-    else
-      render :edit
     end
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email)
+  def message_params
+    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
   end
 
   def set_group
