@@ -2,23 +2,24 @@
   .main-top
     .main-top__info
       %ul.main-top__info__list
-        %li.main-top__info__list__name eiji
+        %li.main-top__info__list__name 
+          = @group.name
         %li.main-top__info__list__edit
-          = link_to 'Edit', "#", class: "main-top__info__list__edit__text" 
-      %p.main-top__info__member Member :eiji
+          = link_to 'Edit', edit_group_path(current_user), class: "main-top__info__list__edit__text" 
+      %p.main-top__info__member
+        Member：
+        - @group.users.each do |user|
+          = user.name
+          
 
   .main-list
-    .main-list__box
-      %ul.main-list__box__top
-        %li.main-list__top__text__name eiji
-        %li.main-list__top__text__time 2019/11/20(Wed) 17:43:01
-      %p.main-list__box__message おはよう！
+    = render @messages
 
   .main-form
-    .main-form__new
-      %form.main-form__new__type
-        %input{type: "text", placeholder: "type a message", class: "main-form__new__type__text"}
-        %label.main-form__new__type__image
+    = form_for [@group, @message] do |f|
+      .main-form__box__new
+        = f.text_field :content, class: "main-form__box__new__text", placeholder: "type a message"
+        = f.label :image, class: "main-form__box__new__image" do
           = icon('far', 'image')
-          %input{type: "file", class: "main-form__new__type__image__data"}
-      %input{type: "submit", value: "Send", class: "main-form__new__send"}
+          = f.file_field :image, class: "main-form__box__new__image__data"
+      = f.submit "Send", class: "main-form__box__send"
