@@ -160,22 +160,68 @@ $act_blue: #38aef0;
 
 // メイン画面フォーム部分
 // ------------------------------------
+// .main-form {
+//   height: 90px;
+//   background-color: #d2d2d2;
+//   display: flex;
+//   align-items: center;
+//   padding: 20px 40px;
+//   &__new {
+//     width: 100%;
+//     @include flex_between;
+//     &__type {
+//       height: 50px;
+//       width: 100%;
+//       line-height: 50px;
+//       background-color: $white;
+//       @include flex_between;
+//       position: relative;
+//       &__text {
+//         text-decoration: none;
+//         width: 100%;
+//         padding-left: 10px;
+//       }
+//       &__image {
+//         color: #000;
+//         position: absolute;
+//         font-size: 1.5rem;
+//         right: 10px;
+//         cursor: pointer;
+//         &__data {
+//           display: none;
+//         }
+//       }
+//     }
+//     &__send {
+//       color: $white;
+//       height: 50px;
+//       min-width: 100px;
+//       line-height: 50px;
+//       text-align: center;
+//       margin-left: 15px;
+//       background-color: $act_blue;
+//       cursor: pointer;
+//     }
+//   }
+// }
+
+
 .main-form {
   height: 90px;
   background-color: #d2d2d2;
   display: flex;
   align-items: center;
   padding: 20px 40px;
-  &__new {
+  &__box {
     width: 100%;
     @include flex_between;
-    &__type {
+    &__new {
       height: 50px;
       width: 100%;
       line-height: 50px;
       background-color: $white;
       @include flex_between;
-      position: relative;
+      position: relative; 
       &__text {
         text-decoration: none;
         width: 100%;
@@ -192,7 +238,7 @@ $act_blue: #38aef0;
         }
       }
     }
-    &__send {
+    .main-form__box__send {
       color: $white;
       height: 50px;
       min-width: 100px;

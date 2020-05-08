@@ -3,28 +3,35 @@
     .main-top__info
       %ul.main-top__info__list
         %li.main-top__info__list__name 
-          = current_user.groups.name
+          = @group.name
         %li.main-top__info__list__edit
           = link_to 'Edit', edit_group_path(current_user), class: "main-top__info__list__edit__text" 
-      %p.main-top__info__member Member :eiji
+      %p.main-top__info__member
+        Member：
+        - @group.users.each do |user|
+          = user.name
+          
 
   .main-list
     = render @messages
 
+  -# form_for適用前
   -# .main-form
-  -#   .main-form__new
-  -#     %form.main-form__new__type
-  -#       %input{type: "text", placeholder: "type a message", class: "main-form__new__type__text"}
-  -#       %label.main-form__new__type__image
+  -#   %form.main-form__box
+  -#     .main-form__box__new
+  -#       %input{type: "text", placeholder: "type a message", class: "main-form__box__new__text"}
+  -#       %label.main-form__box__new__image
   -#         = icon('far', 'image')
-  -#         %input{type: "file", class: "main-form__new__type__image__data"}
-  -#     %input{type: "submit", value: "Send", class: "main-form__new__send"}
+  -#         %input{type: "file", class: "main-form__box__new__image__data"}
+  -#     %input{type: "submit", value: "Send", class: "main-form__box__send"}
+
+  -# form_for適用後
   .main-form
-    .main-form__new
-      .main-form__new__type
-        = form_for [@group, @message] do |f|
-          = f.text_field :content, class: "main-form__new__type__text", placeholder: "type a message"
-          = f.label :image, class: "main-form__new__type__image" do
+    = form_for [@group, @message] do |f|
+      .main-form__box
+        .main-form__box__new
+          = f.text_field :content, class: "main-form__box__new__text", placeholder: "type a message"
+          = f.label :image, class: "main-form__box__new__image" do
             = icon('far', 'image')
-            = f.file_field :image, class: "main-form__new__type__image__data"
-          = f.submit "Send", class: "main-form__new__send"
+            = f.file_field :image, class: "main-form__box__new__image__data"
+        = f.submit "Send", class: "main-form__box__send"
