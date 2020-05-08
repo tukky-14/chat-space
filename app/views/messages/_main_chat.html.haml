@@ -15,23 +15,11 @@
   .main-list
     = render @messages
 
-  -# form_for適用前
-  -# .main-form
-  -#   %form.main-form__box
-  -#     .main-form__box__new
-  -#       %input{type: "text", placeholder: "type a message", class: "main-form__box__new__text"}
-  -#       %label.main-form__box__new__image
-  -#         = icon('far', 'image')
-  -#         %input{type: "file", class: "main-form__box__new__image__data"}
-  -#     %input{type: "submit", value: "Send", class: "main-form__box__send"}
-
-  -# form_for適用後
   .main-form
     = form_for [@group, @message] do |f|
-      .main-form__box
-        .main-form__box__new
-          = f.text_field :content, class: "main-form__box__new__text", placeholder: "type a message"
-          = f.label :image, class: "main-form__box__new__image" do
-            = icon('far', 'image')
-            = f.file_field :image, class: "main-form__box__new__image__data"
-        = f.submit "Send", class: "main-form__box__send"
+      .main-form__box__new
+        = f.text_field :content, class: "main-form__box__new__text", placeholder: "type a message"
+        = f.label :image, class: "main-form__box__new__image" do
+          = icon('far', 'image')
+          = f.file_field :image, class: "main-form__box__new__image__data"
+      = f.submit "Send", class: "main-form__box__send"
