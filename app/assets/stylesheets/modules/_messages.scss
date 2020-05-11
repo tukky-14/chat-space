@@ -133,6 +133,7 @@ $act_blue: #38aef0;
   height: calc(100vh - 190px);
   background-color: #fafafa;
   padding-top: 35px;
+  overflow: scroll;
   &__box {
     padding: 0 40px;
     &__top {

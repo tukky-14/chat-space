@@ -36,7 +36,7 @@ $(function() {
     };
   }
 
-  $("#new_message").on("submit", function(e) {
+  $('#new_message').on("submit", function(e) {
     e.preventDefault()
     var formData = new FormData(this);
     var url = $(this).attr('action')
@@ -49,11 +49,14 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      var html = buildHTML(data);
-      console.log(html);
-      
-      $(".main-list").append(html);
-      $(".new_message")[0].reset(); 
+      var html = buildHTML(data);      
+      $('.main-list').append(html);
+      $('.main-list').animate({ scrollTop: $('.main-list')[0].scrollHeight});
+      $('.new_message')[0].reset();
+      $('.main-form__box__send').removeAttr("disabled");
+    })
+    .fail(function() {
+      alert("メッセージ送信に失敗しました")
     })
   })
 });
