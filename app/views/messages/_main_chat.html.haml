@@ -5,7 +5,7 @@
         %li.main-top__info__list__name 
           = @group.name
         %li.main-top__info__list__edit
-          = link_to 'Edit', edit_group_path(current_user), class: "main-top__info__list__edit__text" 
+          = link_to 'Edit', edit_group_path(@group), class: "main-top__info__list__edit__text" 
       %p.main-top__info__member
         Member：
         - @group.users.each do |user|
